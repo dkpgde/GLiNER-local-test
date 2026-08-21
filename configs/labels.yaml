@@ -1,0 +1,73 @@
+tracks:
+  processchat:
+    prompts:
+      person: person
+      role: business role or job title
+      department: company department
+      organization: organization
+      customer: customer
+      supplier: supplier
+      activity: business activity or task
+      process: business process
+      event: business event
+      business_object: business object or work item
+      document: business document
+      software_system: software system
+      application: software application
+      machine: machine
+      device: device
+      data_field: data field
+      identifier: identifier or reference number
+      database: database
+      file_format: file format
+      location: location
+      time_duration: time duration
+      frequency: frequency or recurrence
+      quantity: quantity
+      money: monetary amount
+      manual_step: manual work step
+      pain_point: process pain point or problem
+      bottleneck: process bottleneck or delay
+      exception: process exception or unusual case
+    groups:
+      stakeholder: [person, role, department, organization, customer, supplier]
+      process_content: [activity, process, event, business_object, document]
+      technology: [software_system, application, machine, device]
+      data: [data_field, identifier, database, file_format]
+      operational_parameter: [location, time_duration, frequency, quantity, money]
+      improvement_signal: [manual_step, pain_point, bottleneck, exception]
+    privacy_labels: []
+
+  dialogpii:
+    prompts:
+      PERSON: person name
+      PERSON_EMAIL: personal email address
+      PERSON_SOCIAL_RELATION: personal social relation
+      ORG: organization
+      PROFESSION: profession or job title
+      PRODUCT: product
+      DATETIME: date or time
+      DATETIME_AGE: person's age
+      QUANTITY: quantity or monetary amount
+      CODE: personal identifier or reference code
+      CODE_PHONE: phone number
+      CODE_URL: URL
+      LOC_CITY: city
+      LOC_COUNTRY: country
+      LOC_STREET: street name
+      LOC_HOUSENUMBER: house number
+      LOC_ZIP: postal code
+      LOC_OTHER: other location
+      MISC: other identifying information
+    groups: {}
+    # Direct identifiers used for the redaction-focused view. Edit this list if
+    # the deployment privacy policy treats contextual categories as direct PII.
+    privacy_labels:
+      - PERSON
+      - PERSON_EMAIL
+      - CODE
+      - CODE_PHONE
+      - CODE_URL
+      - LOC_STREET
+      - LOC_HOUSENUMBER
+      - LOC_ZIP

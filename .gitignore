@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.py[cod]
+.idea/
+.vscode/
+
+# Licensed source data, annotations, model caches, and generated benchmark output.
+data/raw/**
+!data/raw/**/
+!data/raw/**/.gitkeep
+data/processed/*.jsonl
+results/**/*.json
+results/**/*.jsonl
+results/**/*.csv
+results/**/*.png
+results/**/*.md
+*.zip
+.tmp/
+
+!.gitkeep

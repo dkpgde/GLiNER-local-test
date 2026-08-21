@@ -1,0 +1,19 @@
+models:
+  bi-edge:
+    model_id: knowledgator/gliner-bi-edge-v2.0
+  bi-small:
+    model_id: knowledgator/gliner-bi-small-v2.0
+
+# Sweeps are evaluated on the development split only. These fixed points are
+# used for the held-out test split and the final comparison table.
+thresholds: [0.2, 0.3, 0.4, 0.5, 0.6]
+operating_points:
+  processchat: 0.5
+  dialogpii: 0.4
+
+# Add deployment limits before making an automated go/no-go decision.
+decision_criteria:
+  minimum_process_f1: null
+  minimum_pii_recall: null
+  maximum_p95_latency_ms: null
+  maximum_model_ram_mb: null
