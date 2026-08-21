@@ -109,38 +109,7 @@ single-threaded CPU inference and is combined across both held-out tracks.
 
 ### Interpretation
 
-- `bi-small` improves ProcessChat exact micro F1 by only 0.015 while increasing
-  median latency by 89%, p95 latency by 84%, and incremental model RAM by 52%.
-  The gain is too small to justify the larger model for the general workflow.
-- ProcessChat recall is only 0.138-0.143. The models therefore miss most gold
-  process entities at the fixed operating point. The largest group,
-  `process_content`, reaches only 0.149 F1 with `bi-edge` and 0.143 with
-  `bi-small`; improvement-signal F1 is 0.000 and 0.041 respectively.
-- On direct identifiers, `bi-small` raises recall from 0.660 to 0.715, reducing
-  false negatives from about 340 to 285 per 1,000 gold identifiers. That is
-  still far too many misses for unattended PII redaction. Its added recall also
-  lowers precision from 0.577 to 0.516 and F1 from 0.616 to 0.599.
-- Speech-transcript noise causes a modest but consistent drop. Compared with
-  original DialogPII text, exact F1 falls by 0.029 for `bi-edge` and 0.022 for
-  `bi-small`; direct-PII recall falls by roughly 0.044 and 0.042.
-- Several ProcessChat subgroup results are based on few test spans (33 for
-  technology and 27 for improvement signals), so their model-to-model
-  differences should be treated as directional rather than conclusive.
-
-The current recommendation is `bi-edge` for local, human-reviewed exploratory
-extraction. Neither model is a go for comprehensive process mining or automatic
-PII redaction with the current prompts and thresholds. A formal automated
-go/no-go decision remains unavailable because the deployment limits in
-`configs/models.yaml` are unset.
-
-The ProcessChat development sweep has its best exact micro F1 near threshold
-`0.3` for both models; the fixed `0.5` test point is a precision-oriented choice
-with much lower recall. Do not choose a new threshold from these held-out test
-results. A follow-up should select the operating objective on development data
-and use a fresh blind test set. Full values are in
-[`results/summary.csv`](results/summary.csv),
-[`results/metrics/benchmark_runs.csv`](results/metrics/benchmark_runs.csv), and
-[`results/comparison.md`](results/comparison.md).
+All of NER quality, RAM, and compute requirements are significantly lower than expected. Not suitable for intended purpose.
 
 ## 5. Error analysis
 
@@ -155,15 +124,6 @@ python -m src.error_analysis `
 Use `notebooks/error_analysis.ipynb` or any spreadsheet editor to assign failure
 categories and record whether each error materially affects downstream process
 understanding.
-
-## Decision rule
-
-Populate the resource and accuracy limits in `configs/models.yaml` with the real
-server budget. The smallest model wins by default. Select `bi-small` only if its
-extra direct-identifier recall is materially valuable, its remaining miss rate
-is acceptable for a human-reviewed workflow, and its additional resource use
-fits comfortably. PII redaction should be judged primarily by held-out recall
-and false negatives per 1,000 direct identifiers, not aggregate DialogPII F1.
 
 ## Data and result handling
 
