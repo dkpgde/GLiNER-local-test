@@ -8,6 +8,7 @@ __pycache__/
 data/raw/**
 !data/raw/**/
 !data/raw/**/.gitkeep
+/data/raw/processchat/source/
 data/processed/*.jsonl
 results/**/*.json
 results/**/*.jsonl

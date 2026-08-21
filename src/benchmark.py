@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Sequence
 
 import yaml
+from tqdm import tqdm
 
 from src.inference import GlinerRunner, configure_single_thread
 from src.metrics import evaluate
@@ -35,7 +36,8 @@ def _run_once(
     predictions: dict[str, list[Span]] = {}
     profiles: list[dict] = []
     output_records: list[dict] = []
-    for example in examples:
+    description = f"{model_alias} | {dataset_name} | {examples[0].split} | t={threshold:.2f}"
+    for example in tqdm(examples, desc=description, unit="doc", dynamic_ncols=True):
         result = runner.predict(example.text, prompts, threshold)
         predictions[example.id] = result.entities
         profile = {"id": example.id, **result.profile}
