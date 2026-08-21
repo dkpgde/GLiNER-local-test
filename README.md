@@ -170,3 +170,24 @@ and false negatives per 1,000 direct identifiers, not aggregate DialogPII F1.
 Raw data, processed JSONL, predictions, and metrics are gitignored. This avoids
 redistributing licensed datasets and accidentally publishing interview or PII
 content. Review `data/README.md` before sharing any benchmark artifact.
+
+## References
+
+- Zaratiana, U., Tomeh, N., Holat, P., & Charnois, T. (2024). [GLiNER:
+  Generalist Model for Named Entity Recognition using Bidirectional
+  Transformer](https://doi.org/10.18653/v1/2024.naacl-long.300). *Proceedings
+  of NAACL-HLT 2024*, 5364–5376.
+- Stepanov, I., Shtopko, M., Vodianytskyi, D., & Lukashov, O. (2026). [The
+  Million-Label NER: Breaking Scale Barriers with GLiNER
+  bi-encoder](https://arxiv.org/abs/2602.18487). arXiv:2602.18487. Model cards:
+  [`gliner-bi-edge-v2.0`](https://huggingface.co/knowledgator/gliner-bi-edge-v2.0)
+  and
+  [`gliner-bi-small-v2.0`](https://huggingface.co/knowledgator/gliner-bi-small-v2.0).
+- Roller, R., Czehmann, V., Erman, D., et al. (2026). [DialogPII: A
+  multilingual dataset of synthetic dialog transcripts to detect personal
+  information](https://arxiv.org/abs/2606.30312). arXiv:2606.30312. [Dataset,
+  version 1.0](https://doi.org/10.5281/zenodo.20863452).
+- Gantayat, N., Saha, A., & Sindhgatta, R. (2025). [ProcessChat: A Dataset for
+  Business Process Grounded Dialogs](https://doi.org/10.1145/3799830.3799868).
+  *Proceedings of the 13th ACM IKDD International Conference on Data Science
+  (CODS '25)*, 215–223. [Dataset repository](https://github.com/IBM/ProcessChat).
